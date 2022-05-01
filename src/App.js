@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import PostCard from './components/postcards'
+import Navbar from './components/navbar'
+import EditTable from './components/edittable'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      posts: [],
+      isDataLoaded: false,
+    }
+  }
+  
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res=> res.json())
+      .then(json => {
+        this.setState({
+          isDataLoaded:true,
+          posts: json,
+        })
+      })
+  }
+
+render(){
+  let {isDataLoaded,posts} = this.state
+
+    if(!isDataLoaded){
+       return(
+        <div>Loading!</div>
+       )
+    }
+
+  else{
+    return (
+      <div className="App"> 
+          <Navbar posts={this.state.posts}/>
+            {posts.map(posts=>(
+              <PostCard title={posts.title} body={posts.body}></PostCard>
+            ))}
+             {posts.map(posts=>(
+              <EditTable userId={posts.userId} id={posts.id} title={posts.title} body={posts.body}></EditTable>
+            ))}
+      </div>
+    )
+  }
+}
 }
 
 export default App;

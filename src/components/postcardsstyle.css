@@ -1,0 +1,23 @@
+.cardcontainer {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 70px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 30px;
+  margin-bottom: 50px;
+  background-color: #e3efef;
+}
+.title {
+  margin-left: 50px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  padding-top: 10px;
+}
+.postbody {
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 20px;
+}
