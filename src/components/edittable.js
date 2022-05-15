@@ -1,27 +1,22 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './edittablestyle.css'
 
-class Navbar extends Component {
+const Edittable = (props) => {
+    const dispatch = useDispatch()
 
 
-    render(){
-        return(
-            <table>
-            <tr>
-              <th>UserId</th>
-              <th>Id</th>
-              <th>Title</th>
-              <th>Body</th>
-            </tr>
-            <tr>
-              <td>{this.props.userId}</td>
-              <td>{this.props.id}</td>
-              <td>{this.props.title}</td>
-              <td>{this.props.body}</td>
-            </tr>
-          </table>
-        )
-    }
+    return (
+        <tr>
+            <td>{props.userId}</td>
+            <td>{props.id}</td>
+            <td>{props.title}</td>
+            <td>{props.body}</td>
+            <td><Link to={"/editPost/" + props.id}><button>Edit</button> </Link></td>
+            <td><button onClick={() => dispatch({ type: 'posts/postDelete', payload: props.id })}>Delete</button></td>
+        </tr >
+    )
 }
 
-export default Navbar;
+export default Edittable;

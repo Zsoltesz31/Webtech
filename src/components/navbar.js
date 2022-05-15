@@ -1,16 +1,18 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import './navbarstyle.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Admingpage from "../adminpage";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
 
 
-    render(){
-        return(
-        <ul className="navbar">
-            <li><a href="">Edit posts</a></li>
-        </ul>
+    render() {
+        return (
+            <ul className="navbar">
+                <li><Link to="/">Posts</Link></li>
+                <li><Link to="/admin">Manage posts</Link></li>
+
+
+            </ul>
         )
     }
 }

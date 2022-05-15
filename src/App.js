@@ -1,52 +1,25 @@
-import React, {Component} from 'react'
-import PostCard from './components/postcards'
-import Navbar from './components/navbar'
-import EditTable from './components/edittable'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Navbar from './components/navbar.js'
+import Adminpage from './pages/Adminpage.jsx'
+import EditPost from "./pages/EditPost.jsx";
 
-class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state={
-      posts: [],
-      isDataLoaded: false,
-    }
-  }
-  
-  componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(res=> res.json())
-      .then(json => {
-        this.setState({
-          isDataLoaded:true,
-          posts: json,
-        })
-      })
-  }
+const App = () => {
 
-render(){
-  let {isDataLoaded,posts} = this.state
+  return (
 
-    if(!isDataLoaded){
-       return(
-        <div>Loading!</div>
-       )
-    }
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/admin" element={<Adminpage />} />
+        <Route path="/editPost/:id" element={<EditPost />} />
 
-  else{
-    return (
-      <div className="App"> 
-          <Navbar posts={this.state.posts}/>
-            {posts.map(posts=>(
-              <PostCard title={posts.title} body={posts.body}></PostCard>
-            ))}
-             {posts.map(posts=>(
-              <EditTable userId={posts.userId} id={posts.id} title={posts.title} body={posts.body}></EditTable>
-            ))}
-      </div>
-    )
-  }
-}
+      </Routes>
+    </BrowserRouter>
+  )
+
 }
 
-export default App;
+export default App
