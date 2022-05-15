@@ -1,0 +1,55 @@
+.buttonContainer{
+    display:flex;
+    margin-top:50px;
+    margin-bottom:50px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.customButton{
+    padding:5px;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.customButton {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .customButton:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .customButton:focus {
+    outline: none;
+  }
+  
+  .customButton{
+    background-image: linear-gradient(
+      to right,
+      #e3efef,
+      #abdbe3,
+      #abe1e3,
+      #abd5e3
+    );
+    box-shadow: 0 4px 15px 0 #6b898e;
+  }

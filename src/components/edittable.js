@@ -13,8 +13,8 @@ const Edittable = (props) => {
             <td>{props.id}</td>
             <td>{props.title}</td>
             <td>{props.body}</td>
-            <td><Link to={"/editPost/" + props.id}><button>Edit</button> </Link></td>
-            <td><button onClick={() => dispatch({ type: 'posts/postDelete', payload: props.id })}>Delete</button></td>
+            <td><Link to={"/editPost/" + props.id}><button className='customButton'>Edit</button> </Link></td>
+            <td><button onClick={() => dispatch({ type: 'posts/postDelete', payload: props.id })} className='customButton'>Delete</button></td>
         </tr >
     )
 }
