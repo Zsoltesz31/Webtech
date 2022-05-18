@@ -11,17 +11,18 @@ const EditPost = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
 
-    if (useSelector(state => state.posts).length === 0)
-        store.dispatch(fetchPosts)
-    const posts = useSelector(state => state.posts)
-    let post = posts.filter(p => p.id === Number(id))[0]
+    //if (useSelector(state => state.posts).length === 0)
+        //store.dispatch(fetchPosts)
+    const post = useSelector(state => state.posts.filter(p => p.id == Number(id))[0])
 
+    //let post = posts.filter(p => p.id === Number(id))[0]
+   
     const [userId, setuserId] = useState(post.userId)
     const [title, setTitle] = useState(post.title)
     const [body, setBody] = useState(post.body)
 
    const editPost = () => {
-       dispatch({ type: 'posts/editPost', payload: {id,userId,title,body} })
+       dispatch({ type: 'posts/editPost', payload: {id:Number(id),userId:Number(userId),title,body} })
        console.log(id,userId)
    }
 

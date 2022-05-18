@@ -1,6 +1,6 @@
 
 const initialState = []
-
+//CRUD 
 export default function postsReducer(state = initialState, action) {
     switch (action.type) {
         case 'posts/addPost': {
@@ -10,7 +10,7 @@ export default function postsReducer(state = initialState, action) {
             return state.filter((post) => post.id !== action.payload)
         }
         case 'posts/editPost': {
-            let temp = state.filter((post) => post.id !== action.payload.id)
+            let temp = state.filter((post) => post.id != action.payload.id)
             return [...temp,action.payload]
                 
         }
@@ -22,7 +22,7 @@ export default function postsReducer(state = initialState, action) {
     }
 }
 
-// Thunk function
+
 export const fetchPosts = async (dispatch, getState) => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts')
     const data = await response.json()

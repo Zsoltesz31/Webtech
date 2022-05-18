@@ -11,13 +11,13 @@ import './editpoststyle.css'
 const AddPost = () => {
     const dispatch = useDispatch()
     
-     const [id, setId] = useState('')
-     const [userId, setuserId] = useState('')
+     const [id, setId] = useState(0)
+     const [userId, setuserId] = useState(0)
      const [title, setTitle] = useState('')
      const [body, setBody] = useState('')
 
     const addPost = () => {
-        dispatch({ type: 'posts/addPost', payload: {id,userId,title,body} })
+        dispatch({ type: 'posts/addPost', payload: {id:Number(id),userId:Number(userId),title,body} })
         console.log(id,userId,title,body)
     }
 
